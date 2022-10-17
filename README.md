@@ -2,6 +2,6 @@
 
 
 # DATA
-BodyFat.csv is the initial dataset which contains 252 obervations
-
+BodyFat.csv is the initial dataset which contains 252 observations
+BodyFat_clean_data.csv is the clean data that we mainly use for the model which contains 248 observations
 
