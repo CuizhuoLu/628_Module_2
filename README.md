@@ -1,2 +1,7 @@
 # 628 Module 2
-hello world
+
+
+# DATA
+BodyFat.csv is the initial dataset which contains 252 obervations
+
+
