@@ -7,9 +7,9 @@ BodyFat.csv is the initial dataset which contains 252 observations
 BodyFat_clean_data.csv is the clean data that we mainly use for the model which contains 248 observations
 
 ### CODE
-Bodyfat_shinyapp.R is the shiny app for the pridiction of Body fat percentage.
+Bodyfat_shinyapp.R is the shiny app for the prediction of Body fat percentage.
 
-Module2.R includes the data cleaning, data analysis, model fitting, model diagnostics code.
+Module2.R includes data cleaning, analysis, model fitting, and diagnostics code.
 
 ### IMAGE
 This folder includes 10 visualization files.
