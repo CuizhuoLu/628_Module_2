@@ -8,7 +8,7 @@ library(ggplot2)
 
 
 # Data loading
-BodyFat=read.csv("C:/Users/Yujie Zhao/Desktop/FALL 2022/STAT628/BodyFat.csv",header = T)
+BodyFat=read.csv("BodyFat.csv",header = T)
 attach(BodyFat)
 par(mfrow=c(2,2))
 
