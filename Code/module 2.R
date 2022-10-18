@@ -1,7 +1,18 @@
-# data cleaning
-BodyFat=read.csv("BodyFat.csv",header = T)
+library(leaps)
+library(MASS)
+library(dplyr)
+library(ggstance)
+library(cowplot)
+library(tidytree)
+library(ggplot2) 
+
+
+# Data loading
+BodyFat=read.csv("C:/Users/Yujie Zhao/Desktop/FALL 2022/STAT628/BodyFat.csv",header = T)
 attach(BodyFat)
 par(mfrow=c(2,2))
+
+# Histograms
 #Bodyfat
 hist(BODYFAT,breaks=30,cex.lab=1.5,cex.main=1.5,
      main="Histogram of Body Fat %",xlab="BODYFAT %")
@@ -45,6 +56,7 @@ hist(FOREARM,breaks=30,cex.lab=1.5,cex.main=1.5,
 hist(WRIST,breaks=30,cex.lab=1.5,cex.main=1.5,
      main="Histogram of Body Fat %",xlab="WRIST")
 
+# Data Cleaning
 BodyFat=subset(BodyFat,BodyFat$BODYFAT>0.5&BodyFat$BODYFAT<42.3)
 BodyFat=subset(BodyFat,BodyFat$WEIGHT<300)
 BodyFat=subset(BodyFat,BodyFat$HEIGHT>50)
@@ -55,10 +67,8 @@ BodyFat_clean$WEIGHT=BodyFat_clean$WEIGHT*0.453592
 colnames(BodyFat_clean)
 dim(BodyFat_clean)
 
-#find the model
-library(leaps)
-library(MASS)
-
+# Find the model
+# Find best predictor subsets
 best_subset=regsubsets(BODYFAT~AGE+WEIGHT+HEIGHT+NECK+CHEST+ABDOMEN+HIP
                        +THIGH+KNEE+ANKLE+BICEPS+FOREARM+WRIST,data = BodyFat_clean,
                        nbest = 1,nvmax = 12,force.in = NULL,force.out = NULL,
@@ -71,37 +81,26 @@ plot(best_subset,scale = "r2")
 reg.summary = summary_of_best_subset
 par(mfrow=c(2,2))
 
-
+# Plot the statistics for subsets
 plot(reg.summary$adjr2 ,xlab="Number of Variables ",ylab=expression(R^2),type="l")
 plot(reg.summary$bic ,xlab="Number of Variables ",ylab="BIC",type='l')
 
+# Regression Model
 lmmodel=lm(BODYFAT~WEIGHT+ABDOMEN+WRIST,data=BodyFat_clean)
 summary(lmmodel)
 
-#summary
-#standardized residual plot
+# summary
+# standardized residual plot
 par(mfrow = c(1,1))
 plot(predict(lmmodel),resid(lmmodel),pch=19,cex=1.2,cex.lab=1.5,cex.main=1.5,
      xlab="Predicted Body Fat %", ylab="Standardized Residuals",main="Standardized Residual Plot")
 
-#qqnorm
+# qqnorm plot
 qqnorm(rstandard(lmmodel),pch=19,cex=1.2,cex.lab=1.5,cex.main=1.5,
        main="Normal Q-Q Plot of the Residuals")
-
 abline(a=0,b=1,col="black",lwd=3)
 
-
-library(dplyr)
-library(ggstance)
-#install.packages("cowplot")
-library(cowplot)
-# devtools::install_github("YuLab-SMU/treeio")
-# devtools::install_github("YuLab-SMU/ggtree")
-#install.packages("tidytree")
-library(tidytree)
-library(ggplot2) 
-#library(ggtree)
-
+# Prediction vs actural value plot
 p1 = ggplot(BodyFat_clean, aes(x=predict(lmmodel), y=BodyFat_clean$BODYFAT)) + 
   geom_point() +
   geom_abline(intercept=0, slope=1) +
