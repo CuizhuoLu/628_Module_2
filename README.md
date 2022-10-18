@@ -12,4 +12,6 @@ Bodyfat_shinyapp.R is the shiny app for the pridiction of Body fat percentage.
 Module2.R includes the data cleaning, data analysis, model fitting, model diagnostics code.
 
 ### IMAGE
+This folder includes the histogram plots of variavles freqency distributions.
+
 
