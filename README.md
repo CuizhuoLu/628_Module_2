@@ -9,4 +9,4 @@ BodyFat_clean_data.csv is the clean data that we mainly use for the model which 
 ### CODE
 Bodyfat_shinyapp.R is the shiny app for the pridiction of Body fat percentage.
 
-## IMAGE
+### IMAGE
