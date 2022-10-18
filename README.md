@@ -25,4 +25,4 @@ Executive Summary.pdf is a two-page summary of data analysis, with one page of c
 ### How to use the code
 The code including data loading, data cleaning, model selection and model analysis. To run the code, make sure the BadyFat.csv file is in a same folder as Module2.R (So that the file path can work).
 
-The code will generate various plots nd summary of data and the model.
+The code will generate various plots and summary of the data and the model.
