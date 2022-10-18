@@ -18,3 +18,9 @@ This folder includes 10 visualization files.
 - Prediction vs Actual plot
 - Standardized residual plot
 - Normal QQ plot
+
+
+### How to use the code
+The code including data loading, data cleaning, model selection and model analysis. To run the code, make sure the BadyFat.csv file is in a same folder as Module2.R (So that the file path can work).
+
+The code will generate various plots nd summary of data and the model.
